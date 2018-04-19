@@ -21,9 +21,9 @@ export function auth(state=initState,action){
 			return state
 	}
 }
-// action
+// action  should talk to chris's endpoint 
 // export function getUserData(){
-// 	// dispatch用来通知数据修改
+// 	// dispatch used to notify change in data
 // 	return dispatch=>{
 // 		axios.get('/data')
 // 			.then(res=>{

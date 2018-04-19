@@ -4,8 +4,7 @@ import { login,getUserData } from './Auth.redux'
 import {Redirect} from 'react-router-dom'
 import axios from 'axios'
 
-// 两个reducers 每个reducers都有一个state
-// 合并reducers
+// we have two reducer [username passward]  see reducer.js to combine them
 @connect(
 	state=>state.auth,
 	{login}

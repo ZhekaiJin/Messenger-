@@ -1,28 +1,29 @@
-const ADD_GUN = 'ADD USER'
-const REMOVE_GUN = 'REMOVE USER'
+const ADD_User = 'ADD USER'
+const REMOVE_User = 'REMOVE USER'
 
 // reducer
 export function counter(state=10, action){
 	switch(action.type){
-		case ADD_GUN:
+		case ADD_User:
 			return state+1
-		case REMOVE_GUN:
+		case REMOVE_User:
 			return state-1
 		default:
 			return state
 	}
 }
+
 // action creator
-export function addGun(){
-	return {type:ADD_GUN}
+export function addUser(){
+	return {type:ADD_User}
 }
-export function removeGun(){
-	return {type:REMOVE_GUN}
+export function removeUser(){
+	return {type:REMOVE_User}
 }
-export function addGunAsync(){
+export function addUserAsync(){
 	return dispatch=>{
 		setTimeout(()=>{
-			dispatch(addGun())
+			dispatch(addUser())
 		}, 2000)
 	}
 }

@@ -1,8 +1,7 @@
 
-// 合并所有reducer 并且返回
+// combing all reducer and return 
 import { combineReducers } from 'redux'
 import { counter } from './index.redux'
 import { auth } from './Auth.redux'
 
 export default combineReducers({counter,auth})
-
