@@ -21,7 +21,7 @@ class Login extends React.Component{
 		this.handleLogin = this.handleLogin.bind(this)
 	}
 	register(){
-		this.props.history.push('/register')
+		this.props.history.push('/register') //cookiesave
 	}
 	handleChange(key,val){
 		this.setState({
@@ -31,7 +31,7 @@ class Login extends React.Component{
 	handleLogin(){
 		this.props.login(this.state)
 	}
-	render(){
+	render(){  //handle redirect first 
 		return (
 			<div>
 				{this.props.redirectTo? <Redirect to={this.props.redirectTo} />:null}

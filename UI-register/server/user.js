@@ -1,13 +1,13 @@
 const express = require('express')
-const utils = require('utility')
-
+const utils = require('utility') //for md5
 const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
-const _filter = {'pwd':0,'__v':0}
+const _filter = {'pwd':0,'__v':0} //dont show passwd in response
+
 
 Router.get('/list',function(req, res){
-	// User.remove({},function(e,d){})
+	// User.remove({},function(e,d){}) use this if you want to clear all users
 	User.find({},function(err,doc){
 		return res.json(doc)
 	})
@@ -18,17 +18,17 @@ Router.post('/login', function(req,res){
 		if (!doc) {
 			return res.json({code:1,msg:'Username or password error'})
 		}
-		res.cookie('userid', doc._id)
+		res.cookie('userid', doc._id) //save userid in cookie
 		return res.json({code:0,data:doc})
 	})
 })
 Router.post('/register', function(req, res){
 	const {user, pwd, type} = req.body
+	//check duplicate
 	User.findOne({user},function(err,doc){
 		if (doc) {
 			return res.json({code:1,msg:'Username duplicate'})
 		}
-
 		const userModel = new User({user,type,pwd:md5Pwd(pwd)})
 		userModel.save(function(e,d){
 			if (e) {
@@ -41,16 +41,16 @@ Router.post('/register', function(req, res){
 	})
 })
 Router.get('/info',function(req, res){
-	const {userid} = req.cookies
+	const {userid} = req.cookies //get cookie
 	if (!userid) {
-		return res.json({code:1})
+		return res.json({code:1})  //plz go login
 	}
-	User.findOne({_id:userid} ,_filter , function(err,doc){
+	User.findOne({_id:userid} , _filter , function(err,doc){
 		if (err) {
 			return res.json({code:1, msg:'Backend went wrong'})
 		}
 		if (doc) {
-			return res.json({code:0,data:doc})
+			return res.json({code:0,data:doc})  //sccuess
 		}
 	})
 })

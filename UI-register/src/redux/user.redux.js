@@ -11,8 +11,9 @@ const initState={
 	msg:'',
 	user:'',
 	type:''
+	//dont put passwed here 
 }
-// reducer
+// reducer [implementing state chane and redirection]
 export function user(state=initState, action){
 	switch(action.type){
 		case REGISTER_SUCCESS:
@@ -38,11 +39,12 @@ function errorMsg(msg){
 	return { msg, type:ERROR_MSG }
 }
 
-export function loadData(userinfo){
+export function loadData(userinfo){ //put data into state
 	console.log(loadData)
 	return { type:LOAD_DATA, payload:userinfo}
 }
-export function login({user,pwd}){
+
+export function login({user,pwd}){ //control the login component
 	if (!user||!pwd) {
 		return errorMsg('you must enter username and password')
 	}
@@ -50,15 +52,12 @@ export function login({user,pwd}){
 		axios.post('/user/login',{user,pwd})
 			.then(res=>{
 				if (res.status==200&&res.data.code===0) {
-					// dispatch(registerSuccess({user,pwd,type}))
-					dispatch(loginSuccess(res.data.data))
+					dispatch(loginSuccess(res.data.data)) //return data from backend
 				}else{
 					dispatch(errorMsg(res.data.msg))
 				}
 			})
 	}
-
-
 }
 
 export function regisger({user,pwd,repeatpwd,type}){

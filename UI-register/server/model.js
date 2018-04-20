@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 // link mongodb
-const DB_URL = 'mongodb://localhost:27017/imooc-chat'
+const DB_URL = 'mongodb://localhost:27017/messenge'
 mongoose.connect(DB_URL)
 
 
