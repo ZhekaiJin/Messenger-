@@ -16,9 +16,8 @@ class Register extends React.Component{
 			user:'',
 			pwd:'',
 			repeatpwd:'',
-			type:'genius' 
+			type:'student'
 		}
-
 		this.handleRegister = this.handleRegister.bind(this)
 	}
 	handleChange(key,val){
@@ -52,14 +51,14 @@ class Register extends React.Component{
 					>Confirm</InputItem>
 					<WhiteSpace />
 					<RadioItem
-						checked={this.state.type=='genius'}
-						onChange={()=>this.handleChange('type','genius')}
+						checked={this.state.type=='student'}
+						onChange={()=>this.handleChange('type','student')}
 					>
 						Student
 					</RadioItem>
 					<RadioItem
-						checked={this.state.type=='boss'}
-						onChange={()=>this.handleChange('type','boss')}
+						checked={this.state.type=='professor'}
+						onChange={()=>this.handleChange('type','professor')}
 					>
 						Professor
 					</RadioItem>
