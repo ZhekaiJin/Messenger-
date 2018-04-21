@@ -1,6 +1,3 @@
-/**
- * Created by guofei on 2018/1/8.
- */
 const { injectBabelPlugin } = require('react-app-rewired');
 
 module.exports = function override(config, env) {
