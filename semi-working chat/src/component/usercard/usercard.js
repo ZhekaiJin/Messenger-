@@ -12,11 +12,10 @@ class UserCard extends React.Component{
     handleClick(v) {
         this.props.history.push(`/chat/${v._id}`)
     }
-    render() {
 
+    render() {
         const Header = Card.Header
         const Body = Card.Body
-
         return (
             <WingBlank>
                 <WhiteSpace></WhiteSpace>
@@ -33,13 +32,13 @@ class UserCard extends React.Component{
 
                         </Header>
                         <Body>
-                            {v.type=='boss'?<div>公司：{v.company}</div>:null}
+                            {v.type=='professor'?<div>Department：{v.Department}</div>:null}
                             {v.desc.split(' ').map(d=>(
                                 <div key={d}>
                                     {d}
                                 </div>
                             ))}
-                            {v.type=='boss'?<div>薪资：{v.money}</div>:null}
+                            {v.type=='professor'?<div>num{v.number}</div>:null}
                         </Body>
                     </Card>):null
                 ))}

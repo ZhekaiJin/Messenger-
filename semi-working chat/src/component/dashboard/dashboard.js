@@ -7,28 +7,23 @@ import Professor from '../../component/professor/professor'
 import Student from '../../component/student/student'
 import User from '../../component/user/user'
 import {getMsgList,recvMsg} from '../../redux/chat.redux'
+
 function Msg() {
     return <h2>Messege List</h2>
 }
-
 @connect(
     state=>state,
     {getMsgList,recvMsg}
 )
-
-
 class Dashboard extends React.Component {
-
     constructor(props) {
         super(props)
     }
-
     componentDidMount() {
          this.props.getMsgList()
          this.props.recvMsg()
 
      }
-
     render() {
         const user = this.props.user
         const {pathname} = this.props.location
@@ -44,7 +39,7 @@ class Dashboard extends React.Component {
             },
             {
                 path:'/student',
-                text:'boss',
+                text:'professor',
                 icon:'job',
                 title:'Professor List',
                 component:Student,
@@ -65,7 +60,6 @@ class Dashboard extends React.Component {
                 component:User
             }
         ]
-
         return (
             <div>
                 <NavBar className='fixd-header' mode="dard">
@@ -78,10 +72,7 @@ class Dashboard extends React.Component {
                         ))}
                     </Switch>
                 </div>
-
                     <NavLinkBar data={navList}></NavLinkBar>
-
-
             </div>
         )
     }

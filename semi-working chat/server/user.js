@@ -1,5 +1,4 @@
-/**
-/**
+/**s
  * scott Zhekai Jin
  */
 const express = require('express')
@@ -38,7 +37,6 @@ Router.get('/getmsglist', function (req,res) {
     })
 
 })
-
 
 Router.post('/update',function(req,res){
     const userid = req.cookies.userid
@@ -86,7 +84,7 @@ Router.post('/register',function(req,res){
 })
 
 Router.get('/info',function(req,res){
-    const {userid} = req.cookies    
+    const {userid} = req.cookies
     if (!userid) {
         return res.json({code:1})
     }
