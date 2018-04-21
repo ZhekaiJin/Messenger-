@@ -1,1 +1,1 @@
-react redux express node socket.io聊天
+react redux express node socket.io chat app
