@@ -16,8 +16,8 @@ const models = {
 		// title
 		'title':{'type':String},
 		// if you are a professor
-		'company':{'type':String},
-		'money':{'type':String}
+		'Department':{'type':String},
+		'number':{'type':String}
 	},
 	chat:{
 	}

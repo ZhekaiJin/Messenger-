@@ -7,9 +7,25 @@ const _filter = {'pwd':0,'__v':0} //dont show passwd in response
 
 
 Router.get('/list',function(req, res){
-	// User.remove({},function(e,d){}) use this if you want to clear all users
-	User.find({},function(err,doc){
-		return res.json(doc)
+	//User.remove({},function(e,d){}) // use this if you want to clear all users
+	const { type } = req.query
+	//http://localhost:9093/user/list?type=professor will give you only professors
+	User.find({type},function(err,doc){
+		return res.json({code:0, data:doc})
+	})
+})
+Router.post('/update',function(req,res){
+	const userid = req.cookies.userid
+	if (!userid) { //check
+		return json.dumps({code:1})
+	}
+	const body = req.body
+	User.findByIdAndUpdate(userid,body,function(err,doc){ //mongoose function
+		const data = Object.assign({},{
+			user:doc.user,
+			type:doc.type
+		},body) //combine data here
+		return res.json({code:0,data})
 	})
 })
 Router.post('/login', function(req,res){

@@ -4,7 +4,7 @@ export function getRedirectPath({type, avatar}){
 	// user.type /professor /student
 	// user.avatar /professorinfo /studuentinfo
 	let url = (type==='professor')?'/professor': '/student'
-	if (!avatar) {
+	if (!avatar) { //only if they dont have avatar we redirect them to the info filling page 
 		url += 'info'
 	}
 	return url
