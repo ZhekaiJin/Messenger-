@@ -8,23 +8,23 @@ const model = require('./model')
 const User = model.getModel('user')
 const Chat = model.getModel('chat')
 const _filter = {'pwd':0,'__v':0}
-
+// Chat.remove({},function(e,d){
+// })
 Router.get('/list', function (req,res) {
     const { type } = req.query
-    //User.remove({}, function (e,d) {}) run this to remove all user list s
+    // User.remove({}, function (e,d) {}) //run this to remove all user list s
     User.find({type},function(err,doc){
         return res.json({code:0,data:doc})
     })
 })
 
 Router.get('/getmsglist', function (req,res) {
-    const user = req.cookies.user
-    //{'$or':[{from:user,to:user}]}
-    User.find({}, function (e,userDoc) {
+    const user = req.cookies.userid
+    User.find({}, function (e,userdoc) {
         let users = {}
-        console.log(userDoc)
-        userDoc.forEach(v => {
-            users[v._id] = {name: v.user,avatar: v.avatar}
+        console.log(userdoc)
+        userdoc.forEach(v => {
+            users[v._id] = {name:v.user, avatar: v.avatar}
         })
         Chat.find({'$or':[{from:user},{to:user}]}, function (err,doc) {
             if (!err) {
@@ -32,9 +32,8 @@ Router.get('/getmsglist', function (req,res) {
                 return res.json({code:0,msgs:doc,users:users})
             }
         })
-      /*  exployee.find({}).populate.exec(function () {
-        })*/
     })
+
 
 })
 

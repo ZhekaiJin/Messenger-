@@ -17,7 +17,6 @@ class User extends React.Component{
     }
 
     logout() {
-
         const alert = Modal.alert
         alert('Logout', 'Do you really want to quit???', [
             { text: 'cancel', onPress: () => console.log('cancel') },
@@ -26,9 +25,6 @@ class User extends React.Component{
                 this.props.logoutSubmit()
             }},
         ])
-
-
-
     }
 
     render() {
@@ -59,8 +55,6 @@ class User extends React.Component{
                 </div>
         ):<Redirect to={props.redirectTo}/>
     }
-
-
 }
 
 export default User

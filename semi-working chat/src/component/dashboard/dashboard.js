@@ -16,9 +16,6 @@ function Msg() {
     {getMsgList,recvMsg}
 )
 class Dashboard extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     componentDidMount() {
          this.props.getMsgList()
          this.props.recvMsg()
@@ -35,7 +32,7 @@ class Dashboard extends React.Component {
                 icon:'boss',
                 title:'Student List',
                 component:Professor,
-                hide:user.type=='student'
+                hide:user.type === 'student'
             },
             {
                 path:'/student',
@@ -43,7 +40,7 @@ class Dashboard extends React.Component {
                 icon:'job',
                 title:'Professor List',
                 component:Student,
-                hide:user.type=='professor'
+                hide:user.type ==='professor'
             },
             {
                 path:'/msg',
@@ -63,7 +60,7 @@ class Dashboard extends React.Component {
         return (
             <div>
                 <NavBar className='fixd-header' mode="dard">
-                    {navList.find(v => v.path==pathname).title}
+                    {navList.find(v => v.path === pathname).title}
                 </NavBar>
                 <div style={{marginTop:45}}>
                     <Switch>
