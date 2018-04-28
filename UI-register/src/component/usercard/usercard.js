@@ -27,12 +27,9 @@ class UserCard extends React.Component{
 							{v.type=='professor'? <div>number needed:{v.number}</div> :null}
 						</Body>
 					</Card>):null
-
 				))}
 			</WingBlank>
 		)
-
-
 	}
 }
 export default UserCard
