@@ -7,10 +7,8 @@ import Professor from '../../component/professor/professor'
 import Student from '../../component/student/student'
 import User from '../../component/user/user'
 import {getMsgList,recvMsg} from '../../redux/chat.redux'
+import Msg from '../msg/msg'
 
-function Msg() {
-    return <h2>Messege List</h2>
-}
 @connect(
     state=>state,
     {getMsgList,recvMsg}
