@@ -68,8 +68,9 @@ class Chat extends React.Component{
 
 
                 {chatmsgs.map(v =>{
-                    if(!users[v.from].avatar){
-                      var avatar = require(`../img/${users[v.from].avatar}.png`)
+                    console.log(typeof(users))
+                    if(!users.hasOwnProperty(v.from)){
+                      var avatar = require(`../img/girl.png`)
                     }else{
                       var avatar = require(`../img/${users[v.from].avatar}.png`)
                     }
